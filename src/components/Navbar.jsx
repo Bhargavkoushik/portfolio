@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 function Navbar() {
   const location = useLocation()
   const navigate = useNavigate()
   const [activeSection, setActiveSection] = useState('')
+  const [isNavVisible, setIsNavVisible] = useState(true)
+  const lastScrollYRef = useRef(0)
 
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId)
@@ -72,13 +74,46 @@ function Navbar() {
     }
   }, [location.pathname])
 
+  useEffect(() => {
+    const handleNavVisibility = () => {
+      const currentScrollY = window.scrollY
+      const lastScrollY = lastScrollYRef.current
+      const delta = currentScrollY - lastScrollY
+
+      if (currentScrollY <= 12) {
+        setIsNavVisible(true)
+      } else if (delta > 0 && currentScrollY > 90) {
+        setIsNavVisible(false)
+      } else if (delta < 0) {
+        setIsNavVisible(true)
+      }
+
+      lastScrollYRef.current = currentScrollY
+    }
+
+    window.addEventListener('scroll', handleNavVisibility, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleNavVisibility)
+    }
+  }, [])
+
+  useEffect(() => {
+    setIsNavVisible(true)
+    lastScrollYRef.current = window.scrollY
+  }, [location.pathname])
+
   const linkBase =
     'rounded-lg px-3 py-1.5 text-[1.05rem] font-medium text-slate-100 transition-colors hover:bg-white/10 hover:text-cyan-200'
 
   const activeLink = 'bg-cyan-300/20 text-cyan-200'
 
   return (
-    <header className="sticky top-0 z-30 border-b border-cyan-200/10 bg-slate-950/55 backdrop-blur-md">
+    <header
+      className={`sticky top-0 z-30 border-b border-cyan-200/10 bg-slate-950/55 backdrop-blur-md transition-transform duration-300 ease-out ${
+        isNavVisible ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
       <nav className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-3 py-1.5 md:px-6 md:py-3">
         <div className="flex items-center gap-3 text-cyan-100">
           <div className="h-3.5 w-3.5 rounded-full bg-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.75)]" />

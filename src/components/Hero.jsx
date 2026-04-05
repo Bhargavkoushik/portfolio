@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const Hero = () => {
-  const headline = "Hello, my name is Bhargav Koushik Mogalapalli.";
+  const headline = "Hello, My Name is Bhargav Koushik Mogalapalli.";
   const [typedHeadline, setTypedHeadline] = useState("");
   const [isProfileImageLoaded, setIsProfileImageLoaded] = useState(true);
   const profileImageSrc = "/images/profile.jpeg";
