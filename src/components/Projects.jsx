@@ -39,9 +39,9 @@ const Projects = ({ showAll = false }) => {
   const displayedProjects = showAll ? projects : projects.filter((p) => p.featured);
 
   return (
-    <section id="projects" className="scroll-mt-28 py-20 px-6 md:px-20">
+    <section id="projects" className="scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20 md:scroll-mt-28 md:px-20">
       <div className="max-w-6xl mx-auto">
-        <h2 className="mb-12 text-center text-4xl font-semibold text-cyan-200">
+        <h2 className="mb-10 text-center text-3xl font-semibold text-cyan-200 sm:mb-12 sm:text-4xl">
           {showAll ? "All Projects" : "Featured Projects"}
         </h2>
 
@@ -49,7 +49,7 @@ const Projects = ({ showAll = false }) => {
           {displayedProjects.map((project, index) => (
             <div
               key={index}
-              className="rounded-2xl border border-cyan-200/20 bg-white/5 p-6 shadow-[0_0_32px_rgba(56,189,248,0.14)] backdrop-blur-sm transition duration-300 hover:scale-[1.02] hover:border-cyan-300/55"
+              className="rounded-2xl border border-cyan-200/20 bg-white/5 p-5 shadow-[0_0_32px_rgba(56,189,248,0.14)] backdrop-blur-sm transition duration-300 hover:scale-[1.02] hover:border-cyan-300/55 sm:p-6"
             >
               {project.featured && (
                 <span className="mb-2 inline-block rounded border border-cyan-300/35 bg-cyan-300/15 px-2 py-1 text-xs text-cyan-100">
@@ -57,7 +57,7 @@ const Projects = ({ showAll = false }) => {
                 </span>
               )}
 
-              <h3 className="text-xl font-semibold text-cyan-100">{project.title}</h3>
+              <h3 className="break-words text-xl font-semibold text-cyan-100">{project.title}</h3>
 
               <p className="mt-3 text-slate-300">{project.description}</p>
 

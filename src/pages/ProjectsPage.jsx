@@ -22,7 +22,7 @@ function ProjectsPage() {
       <button
         onClick={() => navigate('/')}
         aria-label="Back to Home"
-        className="fixed left-4 top-4 z-30 rounded-full border border-cyan-200/40 bg-slate-900/60 px-4 py-2 text-cyan-100 backdrop-blur-sm transition hover:scale-105 hover:border-cyan-300/70 hover:bg-cyan-200/10"
+        className="fixed left-3 top-16 z-40 rounded-full border border-cyan-200/40 bg-slate-900/60 px-3 py-1.5 text-sm text-cyan-100 backdrop-blur-sm transition hover:scale-105 hover:border-cyan-300/70 hover:bg-cyan-200/10 sm:left-4 sm:top-20 sm:px-4 sm:py-2 sm:text-base md:top-4"
       >
         ← Back
       </button>

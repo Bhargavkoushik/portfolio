@@ -6,6 +6,7 @@ function Navbar() {
   const navigate = useNavigate()
   const [activeSection, setActiveSection] = useState('')
   const [isNavVisible, setIsNavVisible] = useState(true)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const lastScrollYRef = useRef(0)
 
   const scrollToSection = (sectionId) => {
@@ -17,6 +18,8 @@ function Navbar() {
   }
 
   const handleNavClick = (sectionId) => {
+    setIsMobileMenuOpen(false)
+
     if (location.pathname === '/') {
       scrollToSection(sectionId)
       return
@@ -100,6 +103,7 @@ function Navbar() {
 
   useEffect(() => {
     setIsNavVisible(true)
+    setIsMobileMenuOpen(false)
     lastScrollYRef.current = window.scrollY
   }, [location.pathname])
 
@@ -114,13 +118,15 @@ function Navbar() {
         isNavVisible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
-      <nav className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-3 py-1.5 md:px-6 md:py-3">
-        <div className="flex items-center gap-3 text-cyan-100">
+      <nav className="mx-auto flex w-full max-w-[1400px] items-center justify-between gap-2 px-3 py-1.5 md:px-6 md:py-3">
+        <div className="min-w-0 flex items-center gap-3 text-cyan-100">
           <div className="h-3.5 w-3.5 rounded-full bg-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.75)]" />
-          <span className="text-[2rem] font-semibold leading-none tracking-wide">Koushik&apos;s Portfolio</span>
+          <span className="truncate text-sm font-semibold leading-none tracking-wide sm:text-xl md:text-3xl">
+            Koushik&apos;s Portfolio
+          </span>
         </div>
 
-        <div className="flex items-center gap-1 rounded-full border border-white/20 bg-slate-900/55 px-2 py-1 backdrop-blur-md md:gap-2 md:px-3">
+        <div className="hidden items-center gap-1 rounded-full border border-white/20 bg-slate-900/55 px-2 py-1 backdrop-blur-md md:flex md:gap-2 md:px-3">
           <button
             onClick={() => handleNavClick('about')}
             className={`${linkBase} ${activeSection === 'about' ? activeLink : ''}`}
@@ -152,7 +158,54 @@ function Navbar() {
             Contact
           </button>
         </div>
+
+        <button
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded={isMobileMenuOpen}
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          className="rounded-lg border border-white/20 bg-slate-900/60 px-3 py-1.5 text-sm font-semibold text-cyan-100 transition-colors hover:bg-white/10 md:hidden"
+        >
+          Menu
+        </button>
       </nav>
+
+      {isMobileMenuOpen && (
+        <div className="border-t border-cyan-200/10 px-3 py-3 md:hidden">
+          <div className="flex flex-col gap-2 rounded-2xl border border-white/15 bg-slate-900/70 p-2 backdrop-blur-md">
+            <button
+              onClick={() => handleNavClick('about')}
+              className={`${linkBase} text-left ${activeSection === 'about' ? activeLink : ''}`}
+            >
+              About
+            </button>
+            <button
+              onClick={() => handleNavClick('skills')}
+              className={`${linkBase} text-left ${activeSection === 'skills' ? activeLink : ''}`}
+            >
+              Skills
+            </button>
+            <button
+              onClick={() => handleNavClick('projects')}
+              className={`${linkBase} text-left ${activeSection === 'projects' ? activeLink : ''}`}
+            >
+              Projects
+            </button>
+            <button
+              onClick={() => handleNavClick('experience')}
+              className={`${linkBase} text-left ${activeSection === 'experience' ? activeLink : ''}`}
+            >
+              Experience
+            </button>
+            <button
+              onClick={() => handleNavClick('contact')}
+              className={`${linkBase} text-left ${activeSection === 'contact' ? activeLink : ''}`}
+            >
+              Contact
+            </button>
+          </div>
+        </div>
+      )}
     </header>
   )
 }

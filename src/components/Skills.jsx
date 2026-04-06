@@ -46,15 +46,15 @@ const skillsData = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="scroll-mt-28 py-20 px-6 md:px-20">
+    <section id="skills" className="scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20 md:scroll-mt-28 md:px-20">
       <div className="max-w-6xl mx-auto">
-        <h2 className="mb-12 text-center text-4xl font-semibold text-cyan-200">Skills</h2>
+        <h2 className="mb-10 text-center text-3xl font-semibold text-cyan-200 sm:mb-12 sm:text-4xl">Skills</h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillsData.map((category, index) => (
             <div
               key={index}
-              className="rounded-2xl border border-cyan-200/20 bg-white/5 p-6 shadow-[0_0_32px_rgba(56,189,248,0.14)] backdrop-blur-sm transition duration-300 hover:border-cyan-300/50"
+              className="rounded-2xl border border-cyan-200/20 bg-white/5 p-5 shadow-[0_0_32px_rgba(56,189,248,0.14)] backdrop-blur-sm transition duration-300 hover:border-cyan-300/50 sm:p-6"
             >
               <h3 className="mb-4 text-xl font-semibold text-cyan-100">{category.title}</h3>
 

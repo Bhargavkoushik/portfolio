@@ -1,9 +1,9 @@
 const About = () => {
   return (
-    <section id="about" className="scroll-mt-28 py-16 px-6 md:px-20">
+    <section id="about" className="scroll-mt-24 px-4 py-14 sm:px-6 sm:py-16 md:scroll-mt-28 md:px-20">
       <div className="max-w-5xl mx-auto">
-        <div className="rounded-3xl border border-cyan-200/20 bg-white/5 p-7 shadow-[0_0_40px_rgba(56,189,248,0.16)] backdrop-blur-sm md:p-10">
-          <h2 className="text-3xl font-semibold text-cyan-200">About</h2>
+        <div className="rounded-3xl border border-cyan-200/20 bg-white/5 p-5 shadow-[0_0_40px_rgba(56,189,248,0.16)] backdrop-blur-sm sm:p-7 md:p-10">
+          <h2 className="text-2xl font-semibold text-cyan-200 sm:text-3xl">About</h2>
 
           <p className="mt-4 leading-relaxed text-slate-200/90">
             I am an AI/ML undergraduate focused on building end-to-end

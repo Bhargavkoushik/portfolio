@@ -1,6 +1,6 @@
 const FollowRail = () => {
   return (
-    <div className="fixed right-2 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-3 md:flex lg:right-6">
+    <div className="fixed right-2 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-3 lg:flex lg:right-6">
       <span className="[writing-mode:vertical-rl] text-xs tracking-[0.25em] text-cyan-100/80">FOLLOW ME</span>
       <a
         href="https://www.linkedin.com/in/bhargav-koushik10200504"
